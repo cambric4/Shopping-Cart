@@ -1,42 +1,230 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+}
+
+.App {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.navbar {
+  background-color: #9CAF88;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.cart-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.checkout-button {
+  background-color: #3A3A3A;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.home {
   text-align: center;
+  padding: 3rem 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.shop {
+  padding: 2rem 1rem;
 }
 
-@keyframes logo-spin {
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    transform: translateY(20px);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.product-image {
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.price {
+  color: #444;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.quantity-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 0.5rem;
+}
+
+.quantity-control input {
+  width: 50px;
+  text-align: center;
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+.add-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100vw;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .nav-toggle {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
 
-.read-the-docs {
-  color: #888;
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .cart-icon {
+    margin-top: 0.75rem;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    height: 100%;
+    width: 100%;
+  }
+
+  .checkout-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .add-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
 }
